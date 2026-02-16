@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>អបអរសាទរបុណ្យចូលឆ្នាំចិន</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Khmer OS', 'Moul', 'Angkor', 'Battambang', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #8B0000 0%, #D32F2F 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ត្រីកោណមាស */
+        .lanterns-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .lantern {
+            position: absolute;
+            top: -50px;
+            width: 60px;
+            height: 80px;
+            background: #FFD700;
+            border-radius: 30% 30% 20% 20%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            animation: drop 8s infinite linear;
+            transform-origin: top center;
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 20px;
+            height: 15px;
+            background: #FFA500;
+            border-radius: 30% 30% 0 0;
+        }
+
+        .lantern::after {
+            content: '福';
+            position: absolute;
+            top: 25px;
+            left: 15px;
+            font-size: 30px;
+            color: #8B0000;
+            font-weight: bold;
+            transform: rotate(90deg);
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* ដំរកាំង */
+        .lantern:nth-child(1) { left: 10%; animation-duration: 7s; animation-delay: 0s; }
+        .lantern:nth-child(2) { left: 30%; animation-duration: 9s; animation-delay: 2s; width: 50px; height: 70px; }
+        .lantern:nth-child(3) { left: 50%; animation-duration: 8s; animation-delay: 1s; width: 70px; height: 90px; }
+        .lantern:nth-child(4) { left: 70%; animation-duration: 10s; animation-delay: 3s; width: 55px; height: 75px; }
+        .lantern:nth-child(5) { left: 90%; animation-duration: 7.5s; animation-delay: 1.5s; }
+
+        /* មាស */
+        .gold-coins {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .coin {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+            border-radius: 50%;
+            border: 3px solid #FF8C00;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #8B0000;
+            font-weight: bold;
+            animation: coinFloat 2s infinite alternate;
+        }
+
+        @keyframes coinFloat {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        /* កណ្តាល */
+        .card {
+            background: rgba(255, 215, 0, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 50px 20px 50px 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 8px #FFD700, 0 0 0 12px #8B0000;
+            text-align: center;
+            max-width: 600px;
+            margin: 20px;
+            position: relative;
+            z-index: 10;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 8px #FFD700, 0 0 0 12px #8B0000; }
+            to { box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 0 0 12px #FFD700, 0 0 0 16px #B22222; }
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #8B0000;
+            text-shadow: 3px 3px 0 #FFD700, 5px 5px 0 #B8860B;
+            margin-bottom: 20px;
+            font-family: 'Moul', 'Khmer OS', cursive;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #B22222;
+            margin: 20px 0;
+            font-family: 'Moul', 'Khmer OS', cursive;
+            border-bottom: 3px solid #8B0000;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 32px;
+            color: #8B0000;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .year-name {
+            font-size: 60px;
+            background: #8B0000;
+            color: #FFD700;
+            padding: 15px 30px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 25px 0;
+            box-shadow: 0 5px 0 #4A0404;
+            letter-spacing: 4px;
+            font-family: 'Moul', 'Khmer OS', cursive;
+        }
+
+        .wishes {
+            font-size: 24px;
+            line-height: 1.8;
+            color: #4A0404;
+            margin: 30px 0;
+            background: rgba(255,255,200,0.3);
+            padding: 20px;
+            border-radius: 20px;
+            font-family: 'Battambang', 'Khmer OS', system-ui;
+        }
+
+        .wishes p {
+            margin: 10px 0;
+        }
+
+        .firecracker {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 30px 0 10px;
+        }
+
+        .cracker {
+            width: 15px;
+            height: 40px;
+            background: linear-gradient(45deg, #FF4444, #8B0000);
+            border-radius: 30% 30% 0 0;
+            animation: shake 0.2s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .cracker:nth-child(2) { animation-delay: 0.1s; }
+        .cracker:nth-child(3) { animation-delay: 0.2s; }
+        .cracker:nth-child(4) { animation-delay: 0.3s; }
+        .cracker:nth-child(5) { animation-delay: 0.4s; }
+
+        button {
+            background: #8B0000;
+            color: #FFD700;
+            border: none;
+            padding: 15px 30px;
+            font-size: 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            border: 2px solid #FFD700;
+            font-family: 'Battambang', 'Khmer OS', system-ui;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); background: #B22222; }
+            100% { transform: scale(1); }
+        }
+
+        button:hover {
+            background: #FFD700;
+            color: #8B0000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #FFD700;
+        }
+
+        .chinese-char {
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            color: #FFD700;
+            bottom: 0;
+            right: 0;
+            transform: rotate(15deg);
+            font-family: "KaiTi", "SimHei", serif;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .chinese-char.left {
+            left: 0;
+            transform: rotate(-15deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 36px; }
+            h2 { font-size: 28px; }
+            h3 { font-size: 24px; }
+            .year-name { font-size: 40px; }
+            .wishes { font-size: 18px; }
+            .card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ត្រីកោណមាសចុះមកក្រោម -->
+    <div class="lanterns-container">
+        <div class="lantern"></div>
+        <div class="lantern"></div>
+        <div class="lantern"></div>
+        <div class="lantern"></div>
+        <div class="lantern"></div>
+    </div>
+
+    <!-- អក្សរចិនផ្ទៃខាងក្រោយ -->
+    <div class="chinese-char">福</div>
+    <div class="chinese-char left">春</div>
+
+    <!-- កាតពរជ័យកណ្តាល -->
+    <div class="card">
+        <h1>🎊 សួស្តីឆ្នាំចិន 🎊</h1>
+        <h2>ថ្ងៃនេះជាថ្ងៃចូលឆ្នាំចិន</h2>
+        
+        <div class="year-name">🐉 ឆ្នាំរោង 🐉</div>
+        
+        <h3>ឆ្នាំថ្មីប្រពៃណីចិន ២០២៦</h3>
+        
+        <div class="wishes">
+            <p>🧧 សូមប្រកបតែពុទ្ធពរ និងជោគជ័យ</p>
+            <p>🍊 សូមបានសេចក្តីសុខ ចម្រើនរុងរឿង</p>
+            <p>🧨 គ្រួសារមានសុភមង្គល គ្មានរោគាពាធ</p>
+            <p>💰 ទទួលបានអង្ករសាច់ថ្លៃៗរាល់គ្នា!</p>
+        </div>
+
+        <!-- កាំជ្រួចតូច -->
+        <div class="firecracker">
+            <div class="cracker"></div>
+            <div class="cracker"></div>
+            <div class="cracker"></div>
+            <div class="cracker"></div>
+            <div class="cracker"></div>
+        </div>
+
+        <!-- ប៊ូតុងចុចអបអរ -->
+        <button onclick="alert('🧧 សូមពរជ័យកើតមានដល់លោកអ្នក! សួស្តីឆ្នាំថ្មី! 🧧')">
+            ចុចទីនេះដើម្បីទទួលពរ 🧧
+        </button>
+    </div>
+
+    <!-- កាក់មាសអណ្តែត -->
+    <div class="gold-coins">
+        <div class="coin">🧧</div>
+        <div class="coin">🍊</div>
+        <div class="coin">💰</div>
+        <div class="coin">🧨</div>
+        <div class="coin">🐉</div>
+    </div>
+
+    <script>
+        // បន្ថែមអក្សរចិនចៃដន្យនៅខាងក្រោយ (អាចមើលឃើញស្រាប់ហើយ)
+        console.log("សួស្តីឆ្នាំចិន 2026 - ឆ្នាំរោង");
+    </script>
+</body>
+</html>
